@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 13:55:26 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/09 21:02:37 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/09 22:14:11 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	run_game_loop(t_game *game)
 
 int	main(int ac, char **av)
 {
-	t_game *game;
+	t_game	*game;
 
 	if (setup_game(ac, av, &game) != 0)
 		return (1);
