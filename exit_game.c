@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:20:30 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/09 21:24:29 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/11 17:47:17 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,6 @@
 
 void	free_map_data(t_game *game)
 {
-	int	i;
-
-	if (game->map && game->map->map)
-	{
-		i = 0;
-		while (i < game->map->row_num)
-		{
-			if (game->map->map[i])
-				free(game->map->map[i]);
-			i++;
-		}
-		free(game->map->map);
-	}
 	if (game->map)
 		free(game->map);
 }
@@ -43,25 +30,31 @@ void	free_player_data(t_game *game)
 
 void	free_coins_data(t_game *game)
 {
-	int	i;
+	// int	i;
 
-	if (game->coins)
+	// i = 0;
+	if (!game || !game->coins) // Eğer game veya coins NULL ise işlem yapma
+		return;
+
+	if (game->coins->coin_img && game->mlx)
 	{
-		if (game->coins->coin_img && game->mlx)
-			mlx_destroy_image(game->mlx, game->coins->coin_img);
-		if (game->coins->coin_pos)
-		{
-			i = 0;
-			while (i < game->map->coins)
-			{
-				if (game->coins->coin_pos[i])
-					free(game->coins->coin_pos[i]);
-				i++;
-			}
-			free(game->coins->coin_pos);
-		}
-		free(game->coins);
+		mlx_destroy_image(game->mlx, game->coins->coin_img);
+		game->coins->coin_img = NULL;
 	}
+	free(game->coins->coin_pos[0]);
+	free(game->coins->coin_pos[1]);
+	free(game->coins->coin_pos);
+	// if (game->coins->coin_pos )
+	// {
+	// 	while (game->coins->coin_pos[i] != (void *)0)
+	// 	{
+	// 		printf("i : %d\n", i);
+	// 		free(game->coins->coin_pos[i]);
+	// 		i++;
+	// 	}
+	// }
+	// free(game->coins->coin_pos);
+	free(game->coins);
 }
 
 void	free_exit_imgs_data(t_game *game)
@@ -73,7 +66,7 @@ void	free_exit_imgs_data(t_game *game)
 		i = 0;
 		while (i < 2)
 		{
-			if (game->exit_imgs[i])
+			if (game->exit_imgs[i] && game->mlx)
 				mlx_destroy_image(game->mlx, game->exit_imgs[i]);
 			i++;
 		}
@@ -89,7 +82,6 @@ void	free_mlx_data(t_game *game)
 		mlx_destroy_image(game->mlx, game->floor_img);
 	if (game->mlx)
 	{
-		mlx_loop_end(game->mlx);
 		if (game->window)
 			mlx_destroy_window(game->mlx, game->window);
 		mlx_destroy_display(game->mlx);

@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 13:55:26 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/09 22:14:11 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/11 11:43:14 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	setup_game(int ac, char **av, t_game **game_ptr)
 void	run_game_loop(t_game *game)
 {
 	mlx_hook(game->window, 2, 1L << 0, key_hook, game);
-	mlx_hook(game->window, 17, 1L << 17, close_hook, game);
+	mlx_hook(game->window, 17, 0, close_hook, game);
 	mlx_loop(game->mlx);
 }
 

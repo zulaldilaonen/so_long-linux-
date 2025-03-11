@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:15:14 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/09 21:16:53 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/11 14:14:00 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	check_exit(t_game *game)
 		game->move++;
 		move_count(game->move);
 		write(1, "THAT'S GREAT GIRL/BOY!\n", 24);
-		exit(1);
+		exit_game(game);
 	}
 }
 

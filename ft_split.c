@@ -6,13 +6,13 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:33:27 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/09 14:01:46 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/10 17:02:09 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static size_t	ft_word_count(char const *s, char c)
+size_t	ft_word_count(char const *s, char c)
 {
 	size_t	i;
 	size_t	rtn;
@@ -30,7 +30,7 @@ static size_t	ft_word_count(char const *s, char c)
 	return (rtn);
 }
 
-static char	**protect(void)
+char	**protect(void)
 {
 	char	**rtn;
 
